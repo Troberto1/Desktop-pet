@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://bh2op1wsnjitl"]
+
+[ext_resource type="Script" uid="uid://x372yyvc6e7u" path="res://GameFiles/Menu/Code/mainmenu.gd" id="1_abs5y"]
+
+[node name="MainMenu" type="Window" unique_id=1417706075]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+size = Vector2i(126, 100)
+transient = true
+unresizable = true
+maximize_disabled = true
+script = ExtResource("1_abs5y")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=665468010]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.72351176, 0.76415557, 0.8061726, 1)
+
+[node name="Temp_Spawn" type="Button" parent="." unique_id=1855577046]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -45.0
+offset_right = 52.290344
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Spawn"
+
+[connection signal="pressed" from="Temp_Spawn" to="." method="_on_temp_spawn_pressed"]

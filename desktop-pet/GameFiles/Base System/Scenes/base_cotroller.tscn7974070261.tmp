@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bct6hs0wsyhpd"]
+
+[ext_resource type="Script" uid="uid://pf2sboccybxu" path="res://GameFiles/Base System/Code/base_cotroller.gd" id="1_7cwak"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_7cwak"]
+size = Vector2(100, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7cwak"]
+size = Vector2(100, 99)
+
+[node name="Base_Cotroller" type="Node" unique_id=1693115221]
+script = ExtResource("1_7cwak")
+
+[node name="Pet_Collector" type="Node2D" parent="." unique_id=1210825483]
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="." unique_id=1948726609]
+
+[node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D" unique_id=1917552959]
+texture = SubResource("PlaceholderTexture2D_7cwak")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D" unique_id=1556218703]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_7cwak")

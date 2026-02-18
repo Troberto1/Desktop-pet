@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://bh2op1wsnjitl"]
+
+[ext_resource type="Script" uid="uid://x372yyvc6e7u" path="res://GameFiles/Menu/Code/mainmenu.gd" id="1_g87t0"]
+[ext_resource type="Texture2D" uid="uid://cd4t1coiskl3h" path="res://icon.svg" id="2_fl6d4"]
+
+[node name="MainMenu" type="Control" unique_id=440552887]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_g87t0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=665468010]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.72351176, 0.76415557, 0.8061726, 1)
+
+[node name="Temp_Spawn" type="Button" parent="." unique_id=1855577046]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -126.290344
+offset_top = -45.5
+offset_right = 126.290344
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Spawn the Nigger"
+
+[node name="Window" type="Window" parent="." unique_id=1410126805]
+oversampling_override = 1.0
+position = Vector2i(0, 36)
+popup_window = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Window" unique_id=1610024522]
+position = Vector2(50, 48)
+texture = ExtResource("2_fl6d4")
+
+[connection signal="pressed" from="Temp_Spawn" to="." method="_on_temp_spawn_pressed"]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bct6hs0wsyhpd"]
+
+[ext_resource type="Script" uid="uid://pf2sboccybxu" path="res://GameFiles/Base System/Code/base_cotroller.gd" id="1_7cwak"]
+
+[node name="Base_Cotroller" type="Node" unique_id=1693115221]
+script = ExtResource("1_7cwak")
+
+[node name="Pet_Collector" type="Node2D" parent="." unique_id=1210825483]

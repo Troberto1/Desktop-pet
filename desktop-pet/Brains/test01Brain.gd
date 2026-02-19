@@ -6,7 +6,7 @@ extends Node2D
 @onready var tick : Timer = $Window/Timer
 
 const SPEED	 = 10
-var State : String = "idle"
+var State : String = "wander"
 var Audio_Files : Array = [
 	"res://Pets/test01/audio/1.mp3",
 	"res://Pets/test01/audio/2.mp3",
@@ -25,14 +25,21 @@ func _init() -> void:
 	$Window/Label.modulate = Color.hex(0xffffff00)
 	
 
+
+var Wander_Pos : Vector2 
+
 func process2():
 	print(State)
 	match State:
-		"normal":
-			State = "chase"
-			
+		"idle":
+			pass
+		"wander":
+			if Wander_Pos != Vector2(0,0):
+				move_to(Wander_Pos) #FIX!
+			else:
+				Wander_Pos = Vector2(randi_range(0,get_window().size.x),randi_range(0,get_window().size.y))
 		"chase":
-			move_to(get_global_mouse_position())
+			move_to(get_global_mouse_position() + Vector2(ceil(window.size)) / 2)
 			
 		"sound":
 			audio.stop()
@@ -49,10 +56,18 @@ func process2():
 			State = "idle"
 			
 		"idle":
-			State = ["normal","chase", "idle"].pick_random()
+			State = "stop"
+			await get_tree().create_timer(2).timeout
+			State = ["wander", "chase","follow","sound"].pick_random()#NOTE make these chosables by charater  
+			
+		"follow":
+			move_to(get_global_mouse_position())
+	
+		"stop":
+			pass
 
 func move_to(to) -> void:
-	window.position += Vector2i(global_position.direction_to(get_global_mouse_position()))
+	window.position += Vector2i((global_position.direction_to(to)*SPEED))
 	global_position = window.position 
 
 func click():

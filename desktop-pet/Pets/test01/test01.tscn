@@ -208,8 +208,8 @@ stretch_mode = 0
 [node name="Audio" type="AudioStreamPlayer" parent="Window" unique_id=574971698]
 stream = SubResource("AudioStreamMP3_8uaqa")
 
-[node name="Timer" type="Timer" parent="Window" unique_id=638140958]
-wait_time = 0.009999999999999998
+[node name="Timer" type="Timer" parent="Window" unique_id=663030773]
+wait_time = 0.005
 autostart = true
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=706776159]

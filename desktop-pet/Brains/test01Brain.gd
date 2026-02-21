@@ -19,27 +19,27 @@ var Audio_Files : Array = [
 
 func _init() -> void:
 	print("Hello World!")
-	#NOTE: Has to be like this, because onready runs after this (i guess)
+	#NOTE: Has to be like this, because @onready runs after/before this (i guess) and doesnt activates
 	$Window/Timer.connect("timeout",process2)
 	$Window/Input_Button.connect("pressed",click)
 	$Window/Label.modulate = Color.hex(0xffffff00)
 	
 
-
 var Wander_Pos : Vector2 
+var Prev_State : String
 
 func process2():
-	print(State)
+	if State != Prev_State:
+		Prev_State = State
+		print(State)
 	match State:
-		"idle":
-			pass
 		"wander":
 			if Wander_Pos != Vector2(0,0):
 				move_to(Wander_Pos) #FIX!
 			else:
 				Wander_Pos = Vector2(randi_range(0,get_window().size.x),randi_range(0,get_window().size.y))
 		"chase":
-			move_to(get_global_mouse_position() + Vector2(ceil(window.size)) / 2)
+			move_to(get_global_mouse_position() + Vector2(10,10))
 			
 		"sound":
 			audio.stop()
@@ -54,15 +54,14 @@ func process2():
 			audio.play()
 			await get_tree().create_timer(0.3).timeout
 			State = "idle"
-			
+			#TODO: make it wander automaticly switch between idle -- wander, and for temp the state is randomm
 		"idle":
 			State = "stop"
-			await get_tree().create_timer(2).timeout
-			State = ["wander", "chase","follow","sound"].pick_random()#NOTE make these chosables by charater  
+			print("continue")
+			State = ["wander", "chase","follow"].pick_random()#NOTE make these chosables by charater  
 			
 		"follow":
 			move_to(get_global_mouse_position())
-	
 		"stop":
 			pass
 
